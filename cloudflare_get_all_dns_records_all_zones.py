@@ -26,7 +26,7 @@ if cloudflare_dns_response.status_code == 200:
         zone_name = zones["name"]
         zone_id = zones["id"]
         export_filename = "./cloudflare_dns_records-export-"+zone_name+"-"+datetimenow+".json"
-        cloudflare_dns = cloudflare_api + "zones/" + zone_id + "/dns_records"
+        cloudflare_dns = cloudflare_api + "zones/" + zone_id + "/dns_records?page=1&per_page=5000000"
         cloudflare_dns_response = requests.get(cloudflare_dns, headers=headers)
 
         if cloudflare_dns_response.status_code == 200:
